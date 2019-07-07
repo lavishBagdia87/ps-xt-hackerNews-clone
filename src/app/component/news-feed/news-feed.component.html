@@ -1,0 +1,32 @@
+<!-- *ngFor="let item of items; let i = index" -->
+<tr>
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tbody *ngFor="let newsFeed of newsFeeds.hits; let i = index">
+
+            <tr class="athing" id="20373430">
+                <td align="right" valign="top" class="title"><span class="rank">{{i+1}}.</span></td>
+                <td valign="top" class="votelinks">
+                    <a id="up_20373430" *ngIf ="newsFeed.vote !== true"  style="cursor: pointer;"  (click)="upVote(newsFeed)" >
+                        <div class="votearrow" title="upvote"></div>
+                    </a>
+                </td>
+                <td class="title"><a href="https://deno.land/" class="storylink">{{newsFeed.title}}</a></td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td class="subtext">
+                    <span class="score" id="score_20373430">{{newsFeed.points}} points</span> by <a
+                        href="user?id=GutenYe" class="hnuser">{{newsFeed.author}}</a>
+                    <span class="age"><a href="item?id=20373430">{{getDuration(newsFeed.created_at_i)}}</a></span> <span
+                        id="unv_20373430"></span><a *ngIf ="newsFeed.vote !== undefined" style="cursor: pointer;"  (click)="RemoveVote(newsFeed)" >| UnVote </a> | <a style="cursor: pointer;"  (click)="removeFeeds(newsFeed,i)">hide</a> | <a
+                        href="item?id=20373430">{{newsFeed.num_comments}}&nbsp;comments</a> </td>
+            </tr>
+            <tr class="spacer" style="height:5px"></tr>
+        </tbody>
+    </table>
+</tr>
+<tr class="morespace" style="height:20px"></tr>
+<tr>
+    <td colspan="2"></td>
+    <td class="title"><a (click)="getNext()" class="morelink" style="cursor: pointer;" rel="next">More</a></td>
+</tr>
